@@ -11,6 +11,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
+		[SerializeField] private bool m_IsCrouching;
+		[SerializeField] private float m_CrouchSpeed;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
@@ -27,6 +29,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+		[SerializeField] private float hight;
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -41,7 +44,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
         // Use this for initialization
         private void Start()
         {
@@ -60,29 +62,36 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         // Update is called once per frame
         private void Update()
-        {
-            RotateView();
-            // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+		{
+			RotateView ();
+			// the jump state needs to read here to make sure it is not missed
+			if (!m_Jump) {
+				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
+			}
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
-            {
-                StartCoroutine(m_JumpBob.DoBobCycle());
-                PlayLandingSound();
-                m_MoveDir.y = 0f;
-                m_Jumping = false;
-            }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
-            {
-                m_MoveDir.y = 0f;
-            }
+			if (!m_PreviouslyGrounded && m_CharacterController.isGrounded) {
+				StartCoroutine (m_JumpBob.DoBobCycle ());
+				PlayLandingSound ();
+				m_MoveDir.y = 0f;
+				m_Jumping = false;
+			}
+			if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded) {
+				m_MoveDir.y = 0f;
+			}
 
-            m_PreviouslyGrounded = m_CharacterController.isGrounded;
-        }
+			m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
+			if (Input.GetKey (KeyCode.C)) {
+				Vector3 playerposition = transform.position;
+				if (m_IsCrouching == false) {
+					m_IsCrouching = true;
+					transform.position = new Vector3(playerposition.x, hight, playerposition.z);
+				} else {
+					m_IsCrouching = false;
+					transform.position = new Vector3(playerposition.x, hight, playerposition.z);
+				}
+			}
+		}
 
         private void PlayLandingSound()
         {
@@ -107,7 +116,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
-
 
             if (m_CharacterController.isGrounded)
             {
@@ -215,7 +223,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+			speed = m_IsCrouching ? m_CrouchSpeed : m_WalkSpeed;
+			speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:

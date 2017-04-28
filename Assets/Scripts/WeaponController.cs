@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour {
-	public GameObject nearbullet;
+	[SerializeField] private GameObject nearbullet;
 	public GameObject farbullet;
 	GameObject farbullet2;
-	AudioClip fireSound;
+	[SerializeField] private AudioClip fireSound;
 	AudioSource audioSource;
-	public Vector3 destination;
 	// Use this for initialization
 	void Start () {
-		fireSound = Resources.Load<AudioClip>("Audio/fire");
 		audioSource = transform.parent.GetComponent<AudioSource>();
 	}
 	
@@ -27,7 +25,7 @@ public class WeaponController : MonoBehaviour {
 		audioSource.PlayOneShot (fireSound);
 	}
 
-	public void shooting2(){
+	public void shooting2(Vector3 destination){
 		farbullet2 = (GameObject)Instantiate (farbullet, destination, Quaternion.identity);
 	}
 }

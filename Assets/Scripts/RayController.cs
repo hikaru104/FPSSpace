@@ -24,8 +24,7 @@ public class RayController : MonoBehaviour {
 			weaponController.shooting1 ();
 
 			if (Physics.Raycast (ray, out hit)) {
-				weaponController.destination = hit.point;
-				weaponController.shooting2 ();
+				weaponController.shooting2 (hit.point);
 			} 
 		}
 	}

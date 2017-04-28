@@ -18348,10 +18348,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66c030bef4558344a88b8a9fd3525fb9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1200357783 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: e8ef930c672fcce4a88723bcce7a2591, type: 3}
-  m_PrefabInternal: {fileID: 1181712958}
 --- !u!4 &1200357784 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e8ef930c672fcce4a88723bcce7a2591, type: 3}
@@ -23376,6 +23372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5515b66e57cc6464b9e4425e15ff8bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nearbullet: {fileID: 650835751}
+  farbullet: {fileID: 1790452218891362, guid: 90adab01ca4f746ca89ddf01e81c808d, type: 2}
+  fireSound: {fileID: 8300000, guid: 8602b7d5cd15c1943a50aa53f171c8cf, type: 3}
 --- !u!114 &1529626695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23387,9 +23386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b06449699c9d455e89bbeff60a5242d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gan: {fileID: 1200357783}
-  nearbullet: {fileID: 650835751}
-  farbullet: {fileID: 1790452218891362, guid: 90adab01ca4f746ca89ddf01e81c808d, type: 2}
 --- !u!1 &1538702597
 GameObject:
   m_ObjectHideFlags: 0
@@ -25043,7 +25039,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400192, guid: 70bd327581f110b4a936db6df5f9ed54, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622421762}
-  m_LocalRotation: {x: 0.6122276, y: -0.36693394, z: -0.59888977, w: -0.3631361}
+  m_LocalRotation: {x: 0.6122277, y: -0.36693397, z: -0.5988898, w: -0.36313614}
   m_LocalPosition: {x: -6.393426, y: 1.3832966, z: 2.7329824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

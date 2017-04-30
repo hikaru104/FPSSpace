@@ -17,13 +17,13 @@ public class WeaponController : MonoBehaviour {
 	void Update () {
 		nearbullet.SetActive (false);
 	}
-	public void shooting1(){
+
+	public void shooting(RaycastHit hit){
 		nearbullet.SetActive (true);
 		audioSource.PlayOneShot (fireSound);
-	}
-
-	public void shooting2(Vector3 destination){
-		farbullet2 = (GameObject)Instantiate (farbullet, destination, Quaternion.identity);
-		Destroy (farbullet2, 0.1f);
+		if (hit.collider != null) {
+			farbullet2 = (GameObject)Instantiate (farbullet, hit.point, Quaternion.identity);
+			Destroy (farbullet2, 0.1f);
+		}
 	}
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour {
 	[SerializeField] private GameObject nearbullet;
 	[SerializeField] private GameObject farbullet;
-	GameObject farbullet2;
 	[SerializeField] private AudioClip fireSound;
+	GameObject farbullet2;
 	AudioSource audioSource;
 	// Use this for initialization
 	void Start () {

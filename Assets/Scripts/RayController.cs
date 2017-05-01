@@ -18,12 +18,13 @@ public class RayController : MonoBehaviour {
 	void Update (){
 		coolTime += Time.deltaTime;
 
-		if (Input.GetMouseButtonDown (0) && coolTime >= 0.2f) {
+		if (Input.GetMouseButtonDown (0) && coolTime >= 0.2f && weaponController.currentbullet > 0) {
 			coolTime = 0;
 			Ray ray = playerCamera.ScreenPointToRay(center);
 			RaycastHit hit = new RaycastHit ();
 			Physics.Raycast (ray, out hit);
 			weaponController.shooting (hit);
+			weaponController.currentbullet -= 1;
 		}
 	}
 }

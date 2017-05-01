@@ -24,6 +24,9 @@ public class RayController : MonoBehaviour {
 			RaycastHit hit = new RaycastHit ();
 			Physics.Raycast (ray, out hit);
 			weaponController.shooting (hit);
+			if (weaponController.currentbullet > 0){
+				weaponController.currentbullet -= 1;
+			}
 		}
 	}
 }

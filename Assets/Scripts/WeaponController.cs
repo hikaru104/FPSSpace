@@ -17,14 +17,19 @@ public class WeaponController : MonoBehaviour {
 		audioSource = transform.parent.GetComponent<AudioSource>();
 		currentbullet = maxbullet;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		nearbullet.SetActive (false);
-		if (currentbullet < maxbullet && Input.GetKey (KeyCode.R)) {
+		if (currentbullet < maxbullet && bulletbox > 0 && Input.GetKey (KeyCode.R)) {
+			audioSource.PlayOneShot (reloadSound);
+			if (bulletbox > maxbullet - currentbullet){
 			bulletbox -= (maxbullet - currentbullet);
 			currentbullet = maxbullet;
-			audioSource.PlayOneShot (reloadSound);
+			} else {
+				currentbullet += bulletbox;
+				bulletbox = 0;
+			}
 		}
 	}
 

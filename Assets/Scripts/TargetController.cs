@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TargetController : MonoBehaviour {
 	[SerializeField] private int maxlife;
+	private Animator anim;
 	public int life;
-	Animator anim;
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();

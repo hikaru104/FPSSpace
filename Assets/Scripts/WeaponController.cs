@@ -9,8 +9,8 @@ public class WeaponController : MonoBehaviour {
 	[SerializeField] private AudioClip reloadSound;
 	[SerializeField] private int bulletbox;
 	[SerializeField] private int maxbullet;
-	GameObject farbullet2;
-	AudioSource audioSource;
+	private GameObject farbullet2;
+	private AudioSource audioSource;
 	public int currentbullet;
 	// Use this for initialization
 	void Start () {

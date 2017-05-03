@@ -7,10 +7,10 @@ public class WeaponController : MonoBehaviour {
 	[SerializeField] private GameObject farbullet;
 	[SerializeField] private AudioClip fireSound;
 	[SerializeField] private AudioClip reloadSound;
-	[SerializeField] private int bulletbox;
-	[SerializeField] private int maxbullet;
 	private GameObject farbullet2;
 	private AudioSource audioSource;
+	public int bulletbox;
+	public int maxbullet;
 	public int currentbullet;
 	// Use this for initialization
 	void Start () {

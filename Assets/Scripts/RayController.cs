@@ -32,7 +32,7 @@ public class RayController : MonoBehaviour {
 			Physics.Raycast (ray, out hit);
 			weaponController.shooting (hit);
 			weaponController.currentbullet -= 1;
-			if (hit.collider.gameObject == target){
+			if (hit.collider.gameObject.tag == "Target"){
 				targetController.life -= 1;
 				distancex = Mathf.Abs (hit.point.x - marker.transform.position.x);
 				distancey = Mathf.Abs (hit.point.y - marker.transform.position.y);

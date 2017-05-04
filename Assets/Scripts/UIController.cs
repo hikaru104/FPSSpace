@@ -27,16 +27,16 @@ public class UIController : MonoBehaviour {
 		Rect position2 = new Rect (10, Screen.height - 20, 200, 40);
 		Rect position3 = new Rect (Screen.width - 130, Screen.height - 40, 200, 40);
 		Rect position4 = new Rect (Screen.width - 130, Screen.height - 20, 200, 40);
-		Rect positioncenter = new Rect (Screen.width / 2 - 20, Screen.height / 2 - 20, 40, 40);
-		Rect positionsnipe = new Rect (Screen.width / 2 - 750, Screen.height / 2 - 750, 1500, 1500);
+		Rect reticleposition = new Rect (Screen.width / 2 - 20, Screen.height / 2 - 20, 40, 40);
+		Rect snipeposition = new Rect (Screen.width / 2 - 750, Screen.height / 2 - 750, 1500, 1500);
 
 		GUI.Label (position1, "Time:" + time + "s", guiStyle);
 		GUI.Label (position2, "Pt:" + rayController.score, guiStyle);
 		GUI.Label (position3, "BulletBox:" + weaponController.bulletbox, guiStyle);
 		GUI.Label (position4, "Bullet:" + weaponController.currentbullet + "/" + weaponController.maxbullet, guiStyle);
-		GUI.DrawTexture (positioncenter, reticle);
+		GUI.DrawTexture (reticleposition, reticle);
 		if (Input.GetMouseButton (1)) {
-			GUI.DrawTexture (positionsnipe, snipe);
+			GUI.DrawTexture (snipeposition, snipe);
 			playerCamera.fieldOfView = 5;
 		}
 		if (Input.GetMouseButtonUp (1)) {

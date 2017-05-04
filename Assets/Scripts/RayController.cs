@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RayController : MonoBehaviour {
-	[SerializeField] private float score;
 	[SerializeField] private GameObject target;
 	private Camera playerCamera;
 	private float coolTime;
@@ -14,6 +13,7 @@ public class RayController : MonoBehaviour {
 	private float distancex;
 	private float distancey;
 	public GameObject marker;
+	public float score;
 
 	void Start () {
 		playerCamera = GetComponent<Camera> ();
@@ -36,7 +36,7 @@ public class RayController : MonoBehaviour {
 				targetController.life -= 1;
 				distancex = Mathf.Abs (hit.point.x - marker.transform.position.x);
 				distancey = Mathf.Abs (hit.point.y - marker.transform.position.y);
-				score += 1 / distancex + distancey;
+				score += Mathf.Round(1 / (distancex + distancey)) * 10;
 			} 
 		}
 	}

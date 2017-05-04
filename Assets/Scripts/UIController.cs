@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 	[SerializeField] private GameObject player;
-	[SerializeField] private float time;
 	[SerializeField] private GUIStyle guiStyle;
 	[SerializeField] private Texture reticle;
 	private RayController rayController;
 	private WeaponController weaponController;
+	private float time;
 	// Use this for initialization
 	void Start () {
 		rayController =player.GetComponent<RayController>();

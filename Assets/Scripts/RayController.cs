@@ -36,7 +36,7 @@ public class RayController : MonoBehaviour {
 				targetController.life -= 1;
 				distancex = Mathf.Abs (hit.point.x - marker.transform.position.x);
 				distancey = Mathf.Abs (hit.point.y - marker.transform.position.y);
-				score += 1 / (distancex + distancey);
+				score += Mathf.Round(1 / (distancex + distancey)) * 10;
 			} 
 		}
 	}
